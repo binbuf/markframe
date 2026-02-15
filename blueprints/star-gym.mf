@@ -1,0 +1,151 @@
+// Star Gym
+app
+  tabbar
+    tab "Home" icon=home -> home
+    tab "Plans" icon=calendar -> plans
+    tab "Workouts" icon=barbell -> workouts
+    tab "Classes" icon=people -> classes
+    tab "Activity" icon=pulse -> activity
+
+---
+
+view home label="Home"
+  Navbar "Star Gym" subtitle="Danbury Super Sport"
+
+  // Quick Check-in
+  Block strong inset align=center
+    Text "Ready to work out?" variant=subtitle
+    Text "Scan your QR code to enter" variant=caption color=gray
+    Spacer 8
+    Button "Check In" large rounded raised -> check-in-popup
+
+  Popup "Member QR Code" id=check-in-popup
+    Center fill
+      Icon "qr-code" size=240
+      Spacer 16
+      Text "Scan at Front Desk" variant=title
+      Text "Member ID: MF-884291" variant=caption color=gray
+    Block
+      Button "Done" large rounded raised -> home
+
+  // Schedule Section
+  Block "My Schedule" variant=title
+  List inset strong
+    ListItem "Pilates" subtitle="Danbury Club • Studio A" after="6:00 AM, 2/16/26" chevron link -> class-detail
+    ListItem "Power Yoga" subtitle="Danbury Club • Studio B" after="5:30 PM, 2/17/26" chevron link -> class-detail
+
+  // Rewards Section
+  Block "Star Rewards" variant=title
+  Card "Gold Status" subtitle="Next Reward: Free Smoothie"
+    Row justify=between align=center
+      Stat "2,500" label="Points" color=orange-500
+      Badge "75%" color=orange
+    ProgressBar 75 color=orange-500 mt=2
+    Button "Redeem Points" variant=outline mt=4
+
+  // Club Traffic
+  Block "Club Traffic" variant=title
+  Card "Danbury Club" subtitle="Currently: Slightly Busy"
+    Row align=center gap=8
+      Icon "people" color=yellow-600
+      Text "Estimated 65% capacity"
+    ProgressBar 65 color=yellow-500 mt=2
+
+  // Quick Actions
+  Block "Quick Actions" variant=title
+  Row gap=12 p=4 scroll
+    IconCircle "search" label="Find Club" color=blue
+    IconCircle "person-add" label="Add Guest" color=green
+    IconCircle "star" label="Favorites" color=yellow
+    IconCircle "settings" label="Settings" color=gray
+
+---
+
+view plans label="Plans"
+  Navbar "Training Plans"
+  Searchbar placeholder="Search plans..."
+
+  Block "Personal Training" variant=title
+  MediaCard "Elite Training" subtitle="1-on-1 coaching" image=tech
+    Text "Get personalized results with our certified trainers."
+    Button "Book Session" variant=outline mt=2
+
+  Block "Digital Plans" variant=title
+  Row gap=12 p=4 scroll
+    MediaCard "Weight Loss" subtitle="12 Weeks" image=nature width=240
+    MediaCard "Muscle Gain" subtitle="8 Weeks" image=city width=240
+    MediaCard "HIIT Prep" subtitle="4 Weeks" image=travel width=240
+
+---
+
+view workouts label="Workouts"
+  Navbar "Workout Library"
+  Searchbar placeholder="Search 2,000+ exercises"
+
+  Block "Categories" variant=title
+  Grid cols=2 gap=8 p=4
+    Card "Strength" align=center
+      Icon "barbell" size=32
+    Card "Cardio" align=center
+      Icon "walk" size=32
+    Card "Flexibility" align=center
+      Icon "body" size=32
+    Card "HIIT" align=center
+      Icon "flash" size=32
+
+  Block "Popular Workouts" variant=title
+  List
+    ListItem "Full Body Blast" subtitle="45 min • High Intensity" media=flash
+    ListItem "Leg Day Essentials" subtitle="60 min • Strength" media=barbell
+    ListItem "Quick Core" subtitle="15 min • Abs" media=body
+
+---
+
+view classes label="Classes"
+  Navbar "Class Schedule"
+
+  Block flush bg=white borderBottom
+    Segmented options=[Today, Tue, Wed, Thu, Fri] active=0 strong
+
+  Block "Available Classes" variant=title
+  List
+    ListItem "HIIT" subtitle="9:00 AM • 45 min" after="12 spots" chevron link
+    ListItem "Zumba" subtitle="10:30 AM • 50 min" after="Full" chevron link
+    ListItem "BodyPump" subtitle="12:00 PM • 60 min" after="8 spots" chevron link
+    ListItem "Yoga Flow" subtitle="5:30 PM • 60 min" after="Open" chevron link
+
+  Fab "funnel" position=right-bottom color=blue
+
+---
+
+view activity label="Activity"
+  Navbar "Your Activity"
+
+  Block "Monthly Stats" variant=title
+  Row gap=8 p=2
+    Stat "12" label="Visits" icon=calendar color=blue fill
+    Stat "450" label="Minutes" icon=time color=green fill
+    Stat "1.2k" label="Calories" icon=flame color=red fill
+
+  Block "Recent Visits" variant=title
+  List
+    ListItem "Danbury Super Sport" subtitle="Workout • 45 min" after="Yesterday"
+    ListItem "Danbury Super Sport" subtitle="Zumba Class" after="Feb 12"
+    ListItem "Danbury Super Sport" subtitle="Workout • 60 min" after="Feb 10"
+
+---
+
+view class-detail label="Class Details"
+  Navbar "Class Details" backButton -> home
+  Image "nature" height=200 fit=cover
+  Block
+    Text "Power Yoga" variant=title
+    Text "Tuesday, Feb 17 • 5:30 PM" variant=subtitle
+    Spacer 12
+    Text "Improve your strength, flexibility and mental focus in this challenging yoga session suitable for all levels."
+  List
+    ListItem "Instructor" after="Sarah Miller" media=person
+    ListItem "Duration" after="60 Minutes" media=time
+    ListItem "Location" after="Studio B" media=location
+  Block
+    Button "Book Class" large rounded raised

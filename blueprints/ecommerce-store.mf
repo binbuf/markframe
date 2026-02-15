@@ -1,0 +1,214 @@
+// Ecommerce Store
+app
+  tabbar
+    tab "Shop" icon=storefront -> shop
+    tab "Search" icon=search -> search
+    tab "Cart" icon=cart -> cart
+    tab "Profile" icon=person -> profile
+
+---
+
+view shop
+  Navbar "Store" subtitle="Summer Collection"
+    Link "Filter" -> filter-panel
+    Icon "notifications"
+
+  Panel "Filters" id=filter-panel side=right
+    Block "Price Range" variant=title
+    List
+      ListItem "Under $25"
+        Checkbox
+      ListItem "$25 - $50"
+        Checkbox
+      ListItem "$50 - $100"
+        Checkbox
+      ListItem "Over $100"
+        Checkbox
+    Block "Brand" variant=title
+    List
+      ListItem "Nova"
+        Checkbox
+      ListItem "Apex"
+        Checkbox
+      ListItem "Panther"
+        Checkbox
+    Spacer 16
+    Button "Apply Filters" large rounded
+
+  // Hero Section
+  MediaCard "New Season Arrivals" subtitle="Up to 50% off" image=fashion imageHeight=200
+    Button "Shop Now" variant=outline small
+
+  // Featured Categories
+  Block "Categories" variant=title
+  Row gap=12 scroll
+    Chip "Women" media=woman
+    Chip "Men" media=man
+    Chip "Kids" media=happy
+    Chip "Accessories" media=glasses
+    Chip "Sale" media=pricetag color=red
+
+  // Trending Horizontal Scroll
+  Block "Trending Now" variant=title
+  Row gap=16 scroll
+    MediaCard "Summer Dress" subtitle="$49.99" image=fashion width=160 imageHeight=200 rating=4.5 -> product-detail
+    MediaCard "Denim Jacket" subtitle="$89.99" image=fashion width=160 imageHeight=200 rating=4.8 -> product-detail
+    MediaCard "Casual Sneakers" subtitle="$59.99" image=fashion width=160 imageHeight=200 rating=4.2 -> product-detail
+
+  // Product Grid
+  Block "Just For You" variant=title
+  Grid cols=2 gap=12
+    MediaCard "Classic Tee" subtitle="$24.99" image=fashion imageHeight=150 rating=4.0 -> product-detail
+    MediaCard "Slim Jeans" subtitle="$64.99" image=fashion imageHeight=150 rating=4.6 -> product-detail
+    MediaCard "Leather Bag" subtitle="$129.99" image=fashion imageHeight=150 rating=4.9 -> product-detail
+    MediaCard "Sunglasses" subtitle="$19.99" image=fashion imageHeight=150 rating=4.3 -> product-detail
+
+---
+
+view product-detail
+  Navbar "Product" backButton -> shop
+    Icon "heart"
+    Icon "share-social"
+
+  Image "fashion" fit=cover height=350
+
+  Block
+    Row justify=between align=start
+      Column
+        Text "Vintage Denim Jacket" variant=title size=xl
+        Text "Men's Outerwear" variant=caption color=gray
+      Text "$89.99" bold size=2xl
+
+    Spacer 8
+    Row gap=8 align=center
+      Icon "star" variant=filled color=gold size=16
+      Text "4.8 (124 reviews)" variant=caption
+
+  Divider
+
+  Block "Color" variant=title
+  Row gap=12
+    IconCircle ellipse color=blue bg=blue-500 size=32
+    IconCircle ellipse color=black bg=black size=32
+    IconCircle ellipse color=gray bg=gray-300 size=32
+
+  Block "Size" variant=title
+  Segmented options=[XS, S, M, L, XL] active=2
+
+  Block "Description" variant=title
+  Block
+    Text "A classic denim jacket that never goes out of style. Made from 100% organic cotton with a comfortable fit." variant=body color=gray
+
+  Block "Quantity" variant=title
+  Stepper 1
+
+  Spacer 32
+  Block
+    Button "Add to Cart" large rounded raised -> cart
+
+---
+
+view cart
+  Navbar "Shopping Cart"
+
+  List
+    ListItem "Vintage Denim Jacket" subtitle="Size M, Blue" after="$89.99"
+      Image "fashion" size=48 rounded fit=cover
+      Stepper 1 small
+    ListItem "Classic Tee" subtitle="Size L, White" after="$24.99"
+      Image "fashion" size=48 rounded fit=cover
+      Stepper 1 small
+
+  Divider
+
+  Block
+    Row justify=between
+      Text "Subtotal"
+      Text "$114.98"
+    Row justify=between
+      Text "Shipping"
+      Text "$5.00"
+    Spacer 8
+    Divider
+    Spacer 8
+    Row justify=between
+      Text "Total" variant=title
+      Text "$119.98" variant=title
+
+  Spacer 24
+  Block
+    Button "Proceed to Checkout" large rounded raised -> checkout
+
+---
+
+view checkout
+  Navbar "Checkout" backButton -> cart
+
+  Block "Shipping Address" variant=title
+  List inset strong
+    ListItem "John Doe" subtitle="123 Main St, New York, NY" chevron link
+
+  Block "Payment Method" variant=title
+  List inset strong
+    ListItem "FramePay" media=card checked
+      Radio name=payment checked
+    ListItem "Credit Card" media=card
+      Radio name=payment
+    ListItem "PayPal" media=cash
+      Radio name=payment
+
+  Block "Order Summary" variant=title
+  List inset
+    ListItem "Total" after="$119.98" strong
+
+  Spacer 32
+  Block
+    Button "Place Order" large rounded raised -> order-success
+
+---
+
+view order-success
+  Center fill p=24
+    IconCircle checkmark-circle size=80 color=green bg=green-100
+    Spacer 24
+    Text "Order Placed!" variant=title
+    Text "Thank you for your purchase. Your order #12345 has been confirmed." align=center variant=body color=gray
+    Spacer 48
+    Button "Continue Shopping" large rounded variant=outline -> shop
+
+---
+
+view search
+  Navbar "Search"
+  TextField "Search products..." type=search
+
+  Block "Browse by Category" variant=title
+  List
+    ListItem "Clothing" chevron link
+    ListItem "Shoes" chevron link
+    ListItem "Accessories" chevron link
+    ListItem "Home & Living" chevron link
+    ListItem "Electronics" chevron link
+    ListItem "Beauty" chevron link
+
+---
+
+view profile
+  Navbar "Profile"
+
+  Block align=center
+    Avatar gender=male size=80
+    Spacer 16
+    Text "John Doe" variant=title
+    Text "john.doe@example.com" variant=caption
+
+  List inset strong
+    ListItem "My Orders" media=receipt chevron link
+    ListItem "Wishlist" media=heart chevron link
+    ListItem "Shipping Addresses" media=map chevron link
+    ListItem "Payment Methods" media=card chevron link
+
+  List inset strong
+    ListItem "Settings" media=settings chevron link
+    ListItem "Help & Support" media=help-circle chevron link
+    ListItem "Log Out" media=log-out color=red

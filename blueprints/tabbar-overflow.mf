@@ -1,0 +1,12 @@
+// Tabbar Overflow
+view home
+  Navbar "Tabbar Overflow Test"
+  Card "Many Tabs" content="This tabbar has 7 tabs. The last 3 should overflow into a More menu."
+  Tabbar activeIndex=0 showLabels
+    Tab "Home" icon=home
+    Tab "Search" icon=search
+    Tab "Chat" icon=chatbubble badge=3
+    Tab "Photos" icon=images
+    Tab "Music" icon=musical-notes
+    Tab "Settings" icon=settings
+    Tab "Profile" icon=person

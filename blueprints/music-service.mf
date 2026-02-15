@@ -1,0 +1,364 @@
+// Music Service
+app
+  tabbar
+    tab "Home" icon=home -> home
+    tab "Search" icon=search -> search
+    tab "Library" icon=library -> library
+    tab "Premium" icon=diamond -> premium
+    tab "Now Playing" icon=play-circle -> now-playing
+
+---
+
+view home label="Home"
+  Navbar "Good evening"
+  
+  Block "Recently Played" variant=title
+  Row gap=12
+    Card "Daily Mix 1" outline
+      Image "https://picsum.photos/150/150" alt="Playlist cover"
+      Text "Daily Mix 1" variant=subtitle
+      Text "Indie, Alternative" variant=caption color=gray
+    Card "Discover Weekly" outline
+      Image "https://picsum.photos/150/150" alt="Playlist cover"
+      Text "Discover Weekly" variant=subtitle
+      Text "Your weekly mixtape" variant=caption color=gray
+  
+  Block "Made For You" variant=title
+  List inset
+    ListItem "Release Radar" subtitle="Catch all the latest music" media=musical-notes chevron link -> playlist-detail
+    ListItem "Daily Mix 1" subtitle="Neon Dream, Synth Wave, and more" media=disc chevron link -> playlist-detail
+    ListItem "Daily Mix 2" subtitle="The Rhythm, Polar Beat" media=disc chevron link -> playlist-detail
+    ListItem "Liked Songs" subtitle="342 songs" media=heart chevron link -> liked-songs
+  
+  Block "Your Top Mixes" variant=title
+  List inset
+    ListItem "Chill Mix" subtitle="Relax and unwind" media=headset chevron link -> playlist-detail
+    ListItem "Workout Mix" subtitle="Get pumped up" media=fitness chevron link -> playlist-detail
+    ListItem "Focus Flow" subtitle="Concentration music" media=bulb chevron link -> playlist-detail
+
+  Spacer 80
+
+---
+
+view search label="Search"
+  Navbar "Search"
+  
+  TextField "Artists, songs, or podcasts" type=search placeholder="What do you want to listen to?"
+  
+  Block "Your Top Genres" variant=title
+  Row gap=8
+    Chip "Indie Rock" color=blue
+    Chip "Electronic" color=purple
+    Chip "Hip-Hop" color=green
+    Chip "Jazz" color=red
+  
+  Block "Browse All" variant=title
+  List inset
+    ListItem "Podcasts" media=mic chevron link -> browse-category
+    ListItem "Made For You" media=person chevron link -> browse-category
+    ListItem "New Releases" media=musical-note chevron link -> browse-category
+    ListItem "Charts" media=trending-up chevron link -> browse-category
+    ListItem "Concerts" media=ticket chevron link -> browse-category
+    ListItem "Discover" media=compass chevron link -> browse-category
+    ListItem "Pop" media=radio chevron link -> browse-category
+    ListItem "Rock" media=guitar chevron link -> browse-category
+    ListItem "Hip-Hop" media=mic-outline chevron link -> browse-category
+    ListItem "Electronic" media=pulse chevron link -> browse-category
+
+  Spacer 80
+
+---
+
+view browse-category label="Category"
+  Navbar "Rock" backButton -> search
+  
+  Block "Popular Playlists" variant=title
+  List inset
+    ListItem "Rock Classics" subtitle="The biggest rock songs" media=musical-notes chevron link -> playlist-detail
+    ListItem "Alternative Rock" subtitle="Modern rock hits" media=musical-notes chevron link -> playlist-detail
+    ListItem "Hard Rock" subtitle="Heavy and loud" media=musical-notes chevron link -> playlist-detail
+    ListItem "Indie Rock" subtitle="Independent artists" media=musical-notes chevron link -> playlist-detail
+  
+  Block "Featured Artists" variant=title
+  List inset
+    ListItem "The Legends" subtitle="1.2B monthly listeners" chevron link -> artist-detail
+    ListItem "Heavy Metal" subtitle="45M monthly listeners" chevron link -> artist-detail
+    ListItem "Prism Light" subtitle="38M monthly listeners" chevron link -> artist-detail
+    ListItem "Royalty" subtitle="52M monthly listeners" chevron link -> artist-detail
+
+  Spacer 80
+
+---
+
+view library label="Your Library"
+  Navbar "Your Library"
+  
+  Row gap=8 justify=start
+    Chip "Playlists" color=green
+    Chip "Artists" outline
+    Chip "Albums" outline
+    Chip "Podcasts" outline
+  
+  List inset
+    ListItem "Liked Songs" subtitle="342 songs" media=heart color=purple chevron link -> liked-songs
+    ListItem "Your Episodes" subtitle="12 episodes" media=bookmark chevron link -> episodes
+  
+  Block "Playlists" variant=title
+  List inset
+    ListItem "Summer Vibes 2026" subtitle="48 songs · 3h 12min" chevron link -> playlist-detail
+    ListItem "Road Trip Mix" subtitle="67 songs · 4h 28min" chevron link -> playlist-detail
+    ListItem "Workout Pump" subtitle="32 songs · 2h 5min" chevron link -> playlist-detail
+    ListItem "Late Night Jazz" subtitle="54 songs · 3h 45min" chevron link -> playlist-detail
+    ListItem "Focus & Study" subtitle="89 songs · 5h 32min" chevron link -> playlist-detail
+  
+  Block "Albums" variant=title
+  List inset
+    ListItem "Currents" subtitle="Neon Dream · 2015" chevron link -> album-detail
+    ListItem "AM" subtitle="Polar Beat · 2013" chevron link -> album-detail
+    ListItem "Random Access Memories" subtitle="Cyber Duo · 2013" chevron link -> album-detail
+
+  Fab "add" position=right-bottom color=green
+
+  Spacer 80
+
+---
+
+view playlist-detail label="Playlist"
+  Navbar "Daily Mix 1" backButton -> home
+  
+  Block
+    Image "https://picsum.photos/300/300" alt="Playlist cover"
+    Spacer 16
+    Text "Daily Mix 1" variant=title
+    Text "Neon Dream, Synth Wave, The Rhythm, and more" variant=caption color=gray
+    Text "50 songs · 3h 24min" variant=caption color=gray
+    Spacer 16
+    Row gap=12 justify=between
+      Button "Play" color=green raised rounded large
+      Button "Shuffle" variant=outline rounded
+  
+  Block "Songs" variant=title
+  List inset
+    ListItem "Let It Happen" subtitle="Neon Dream · Currents" after="7:47" link -> now-playing
+    ListItem "Electric Feel" subtitle="Synth Wave · Oracular Spectacular" after="3:49" link -> now-playing
+    ListItem "Reptilia" subtitle="The Rhythm · Room on Fire" after="3:41" link -> now-playing
+    ListItem "Do I Wanna Know?" subtitle="Polar Beat · AM" after="4:32" link -> now-playing
+    ListItem "Feels Like We Only Go Backwards" subtitle="Neon Dream · Lonerism" after="3:12" link -> now-playing
+    ListItem "Time to Pretend" subtitle="Synth Wave · Oracular Spectacular" after="4:21" link -> now-playing
+    ListItem "Last Nite" subtitle="The Rhythm · Is This It" after="3:17" link -> now-playing
+    ListItem "R U Mine?" subtitle="Polar Beat · AM" after="3:21" link -> now-playing
+    ListItem "The Less I Know The Better" subtitle="Neon Dream · Currents" after="3:36" link -> now-playing
+    ListItem "Kids" subtitle="Synth Wave · Oracular Spectacular" after="5:02" link -> now-playing
+
+  Spacer 80
+
+---
+
+view liked-songs label="Liked Songs"
+  Navbar "Liked Songs" backButton -> library
+  
+  Block
+    Row gap=12 align=center
+      Icon "heart" size=80 color=purple
+      Column gap=4
+        Text "Liked Songs" variant=title
+        Text "342 songs" variant=caption color=gray
+    Spacer 16
+    Row gap=12 justify=between
+      Button "Play" color=green raised rounded large
+      Button "Shuffle" variant=outline rounded
+  
+  List inset
+    ListItem "Blinding Lights" subtitle="The Night · After Hours" after="3:20" link -> now-playing
+    ListItem "Levitating" subtitle="Luna Pop · Future Nostalgia" after="3:23" link -> now-playing
+    ListItem "Save Your Tears" subtitle="The Night · After Hours" after="3:35" link -> now-playing
+    ListItem "Good 4 U" subtitle="Ruby Rock · SOUR" after="2:58" link -> now-playing
+    ListItem "Peaches" subtitle="Jay B · Justice" after="3:18" link -> now-playing
+    ListItem "Stay" subtitle="The Kid, Jay B" after="2:21" link -> now-playing
+    ListItem "Heat Waves" subtitle="Crystal Zoo · Dreamland" after="3:58" link -> now-playing
+    ListItem "Shivers" subtitle="Red Singer · =" after="3:27" link -> now-playing
+
+  Spacer 80
+
+---
+
+view artist-detail label="Artist"
+  Navbar "Neon Dream" backButton -> browse-category
+  
+  Block
+    Image "https://picsum.photos/400/300" alt="Artist photo"
+    Spacer 16
+    Text "Neon Dream" variant=title
+    Text "8.2M monthly listeners" variant=caption color=gray
+    Spacer 16
+    Row gap=12
+      Button "Play" color=green raised rounded large
+      Button "Follow" variant=outline rounded
+      Button "Share" variant=clear
+        Icon "share-social"
+  
+  Block "Popular" variant=title
+  List inset
+    ListItem "The Less I Know The Better" subtitle="Currents" after="3:36" link -> now-playing
+    ListItem "Let It Happen" subtitle="Currents" after="7:47" link -> now-playing
+    ListItem "Feels Like We Only Go Backwards" subtitle="Lonerism" after="3:12" link -> now-playing
+    ListItem "Borderline" subtitle="The Slow Rush" after="3:58" link -> now-playing
+    ListItem "New Person, Same Old Mistakes" subtitle="Currents" after="6:03" link -> now-playing
+  
+  Block "Albums" variant=title
+  List inset
+    ListItem "The Slow Rush" subtitle="2020 · 12 songs" chevron link -> album-detail
+    ListItem "Currents" subtitle="2015 · 13 songs" chevron link -> album-detail
+    ListItem "Lonerism" subtitle="2012 · 12 songs" chevron link -> album-detail
+    ListItem "Innerspeaker" subtitle="2010 · 11 songs" chevron link -> album-detail
+  
+  Block "About" variant=title
+  Block strong inset
+    Text "Neon Dream is the psychedelic music project of Australian multi-instrumentalist Ken Park. In the recording studio, Ken writes, records, performs, and produces all of the project's music."
+
+  Spacer 80
+
+---
+
+view album-detail label="Album"
+  Navbar "Currents" backButton -> artist-detail
+  
+  Block
+    Image "https://picsum.photos/300/300" alt="Album cover"
+    Spacer 16
+    Text "Currents" variant=title
+    Text "Neon Dream" variant=subtitle
+    Text "2015 · 13 songs · 51 min" variant=caption color=gray
+    Spacer 16
+    Row gap=12 justify=between
+      Button "Play" color=green raised rounded large
+      Button "Add to Library" variant=outline rounded
+  
+  List inset
+    ListItem "Let It Happen" after="7:47" link -> now-playing
+    ListItem "Nangs" after="1:47" link -> now-playing
+    ListItem "The Moment" after="4:15" link -> now-playing
+    ListItem "Yes I'm Changing" after="4:30" link -> now-playing
+    ListItem "Eventually" after="5:19" link -> now-playing
+    ListItem "Gossip" after="0:55" link -> now-playing
+    ListItem "The Less I Know The Better" after="3:36" link -> now-playing
+    ListItem "Past Life" after="3:47" link -> now-playing
+    ListItem "Disciples" after="1:48" link -> now-playing
+    ListItem "Cause I'm A Man" after="4:01" link -> now-playing
+    ListItem "Reality in Motion" after="4:12" link -> now-playing
+    ListItem "Love/Paranoia" after="3:06" link -> now-playing
+    ListItem "New Person, Same Old Mistakes" after="6:03" link -> now-playing
+  
+  Block "More by Neon Dream" variant=title
+  List inset
+    ListItem "The Slow Rush" subtitle="2020" chevron link -> album-detail
+    ListItem "Lonerism" subtitle="2012" chevron link -> album-detail
+
+  Spacer 80
+
+---
+
+view now-playing label="Now Playing"
+  Navbar "Now Playing"
+  Block className="w-64 h-64 mx-auto rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center shadow-lg"
+    Icon "musical-notes" variant=filled size=large color=white
+  Spacer 16
+  Column align=center gap=4
+    Text "Midnight Dreams" variant=title
+    Text "The Stargazers"
+    Badge "Cosmic Voyage" color=gray
+  Row gap=24 justify=center align=center py=4
+    Link iconLeft=shuffle
+    Link iconLeft=play-skip-back
+    Fab pause
+    Link iconLeft=play-skip-forward
+    Link iconLeft=repeat
+  Divider spacing=16
+  Row gap=16 justify=center px=4
+    Chip "Like" media=heart
+    Chip "Add to Playlist" media=add
+    Chip "Share" media=share
+  
+  Block px=4 mt=4
+    Range 70 label="Volume"
+
+  Spacer 64
+
+---
+
+view premium label="Premium"
+  Navbar "Music Platform"
+  
+  Block
+    Image "https://picsum.photos/400/200" alt="Premium banner"
+    Spacer 16
+    Text "Get Premium" variant=title
+    Text "Enjoy ad-free music listening, offline playback, and more." variant=caption color=gray
+  
+  Block "Plans" variant=title
+  Card "Individual" outline raised
+    Text "Individual" variant=subtitle
+    Text "$10.99/month" bold size=xl
+    Spacer 8
+    Text "1 account" variant=caption
+    Spacer 16
+    Button "Get Premium" color=green raised rounded large
+  
+  Spacer 16
+  
+  Card "Duo" outline raised
+    Text "Duo" variant=subtitle
+    Text "$14.99/month" bold size=xl
+    Spacer 8
+    Text "2 accounts" variant=caption
+    Spacer 16
+    Button "Get Premium" color=green raised rounded large
+  
+  Spacer 16
+  
+  Card "Family" outline raised
+    Text "Family" variant=subtitle
+    Text "$16.99/month" bold size=xl
+    Spacer 8
+    Text "Up to 6 accounts" variant=caption
+    Spacer 16
+    Button "Get Premium" color=green raised rounded large
+  
+  Spacer 16
+  
+  Card "Student" outline raised
+    Text "Student" variant=subtitle
+    Text "$5.99/month" bold size=xl
+    Spacer 8
+    Text "1 account · Discount for eligible students" variant=caption
+    Spacer 16
+    Button "Get Premium" color=green raised rounded large
+  
+  Block "Premium Features" variant=title
+  List inset strong outline
+    ListItem "Ad-free music" media=close-circle
+    ListItem "Offline playback" media=download
+    ListItem "Play anywhere" media=phone-portrait
+    ListItem "High quality audio" media=musical-notes
+    ListItem "Group Session" media=people
+    ListItem "Cancel anytime" media=checkmark-circle
+
+  Spacer 80
+
+---
+
+view episodes label="Your Episodes"
+  Navbar "Your Episodes" backButton -> library
+  
+  Block "Downloaded" variant=title
+  List inset
+    ListItem "The J.R. Experience #1234" subtitle="J.R. · 2h 45min" media=mic chevron link
+    ListItem "L.F. Podcast #567" subtitle="L.F. · 3h 12min" media=mic chevron link
+  
+  Block "New Episodes" variant=title
+  List inset
+    ListItem "How I Built This: SoundStream" subtitle="Global Radio · 45min · Yesterday" media=mic chevron link
+    ListItem "The Daily: Music Industry" subtitle="Daily Journal · 28min · 2 days ago" media=mic chevron link
+    ListItem "City Sound: Sound Design" subtitle="City Sound Studios · 52min · 3 days ago" media=mic chevron link
+
+  Spacer 80

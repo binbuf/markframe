@@ -1,0 +1,182 @@
+// Fitness Tracker
+app
+  tabbar
+    tab "Home" icon=home -> home
+    tab "Activity" icon=pulse -> activity
+    tab "Plans" icon=calendar -> plans
+    tab "Profile" icon=person -> profile
+
+---
+
+view home label="Home"
+  Navbar "Fitness" subtitle="Today's Summary"
+
+  // Daily Stats
+  Row gap=8 p=2
+    Stat "8,432" label="Steps" icon=footsteps color=blue fill
+    Stat "524" label="Calories" icon=flame color=red fill
+    Stat "3.2" label="Miles" icon=map color=green fill
+
+  // Goal Progress
+  Block "Daily Goal" variant=title
+  Block strong inset
+    Row justify=between align=center
+      Text "8,432 / 10,000 steps"
+      Badge "84%" color=primary
+    Spacer 8
+    ProgressBar 84 color=blue height=3
+
+  // Quick Start
+  Block "Quick Start" variant=title
+  Row gap=8 p=4 scroll
+    Chip "Outdoor Run" media=walk color=blue
+    Chip "Treadmill" media=walk outline
+    Chip "Cycling" media=bicycle outline
+    Chip "Yoga" media=body outline
+    Chip "HIIT" media=flash outline
+
+  Spacer 16
+
+  Button "Start Workout" large rounded className="mx-4" -> workout-active
+
+---
+
+view activity label="Activity"
+  Navbar "Activity"
+
+  // Weekly Calendar
+  Block flush borderBottom bg=white
+    Row justify=between p=4
+      Column align=center
+        Text "M" variant=caption color=gray
+        Text "12"
+      Column align=center
+        Text "T" variant=caption color=gray
+        Text "13"
+      Column align=center
+        Text "W" variant=caption color=gray
+        Block bg=blue-500 flush className="rounded-full w-8 h-8 flex items-center justify-center text-white"
+          Text "14"
+      Column align=center
+        Text "T" variant=caption color=gray
+        Text "15"
+      Column align=center
+        Text "F" variant=caption color=gray
+        Text "16"
+      Column align=center
+        Text "S" variant=caption color=gray
+        Text "17"
+      Column align=center
+        Text "S" variant=caption color=gray
+        Text "18"
+
+  Spacer 16
+
+  Block "Today" variant=title
+  List
+    ListItem "Morning Run" subtitle="5K • 28 min • 320 cal" media=walk after="6:30 AM" badge=PR badgeColor=success chevron link -> activity-detail
+    ListItem "Lunch Walk" subtitle="2.1 km • 20 min • 110 cal" media=footsteps after="12:15 PM" chevron link -> activity-detail
+
+  Block "Yesterday" variant=title
+  List
+    ListItem "Evening Yoga" subtitle="Recovery • 45 min • 180 cal" media=body after="7:00 PM" chevron link -> activity-detail
+    ListItem "Cycling" subtitle="Indoor • 30 min • 250 cal" media=bicycle after="6:00 AM" chevron link -> activity-detail
+
+---
+
+view plans label="Plans"
+  Navbar "Plans"
+
+  Block "Your Plan" variant=title
+  Card "Marathon Training" subtitle="Week 4 of 12"
+    Spacer 8
+    ProgressBar 33 color=green height=2
+    Spacer 8
+    Text "Next: 10K Long Run"
+    Button "View Schedule" variant=outline mt=2
+
+  Block "Featured" variant=title
+  Row gap=12 p=4 scroll
+    MediaCard "Couch to 5K" subtitle="8 Weeks • Beginner" image=nature width=264
+      Button "Join" variant=clear color=blue
+
+    MediaCard "30 Day Ab Challenge" subtitle="4 Weeks • Intermediate" image=nature width=264
+      Button "Join" variant=clear color=blue
+
+    MediaCard "Yoga for Flexibility" subtitle="Ongoing • All Levels" image=nature width=264
+      Button "Join" variant=clear color=blue
+
+---
+
+view profile label="Profile"
+  Navbar "Profile"
+
+  Block align=center p=4 mt=4
+    Avatar size=96 mb=4
+    Text "Alex Runner" variant=title
+    Text "Level 5 Athlete" variant=caption color=gray
+
+  Row justify=around p=4 borderTop borderBottom
+    Stat "1,240" label="Total km" fill
+    Stat "142" label="Workouts" fill
+    Stat "42h" label="Active" fill
+
+  List inset strong outline
+    ListItem "My Goals" chevron link
+    ListItem "Connected Apps" chevron link
+    ListItem "Personal Records" chevron link
+
+  List inset strong outline
+    ListItem "Notifications"
+      Switch checked
+    ListItem "Health Data" chevron link
+
+---
+
+view workout-active
+  Navbar "Workout" backButton -> home
+
+  Center p=12
+    Text "00:12:45" size=6xl mono bold
+    Text "Duration" variant=caption
+
+    Spacer 32
+
+    Row gap=32 justify=center
+      Stat "1.25" label="Miles"
+      Stat "145" label="BPM"
+      Stat "9'30\"" label="Pace"
+
+  Spacer 64
+
+  Row justify=center gap=16
+    Button "Pause" variant=outline large rounded className="w-32"
+    Button "End" color=red large rounded className="w-32" -> home
+
+---
+
+view activity-detail
+  Navbar "Morning Run" backButton -> activity
+
+  Image "nature" height=192 fit=cover
+
+  Block p=4 borderBottom
+    Row justify=between align=center
+      Column
+        Text "Morning Run" variant=title
+        Text "Today, 6:30 AM" variant=caption color=gray
+      Badge "PR" color=success
+
+  Grid cols=2 gap=16 p=4
+    Stat "5.02 km" label="Distance"
+    Stat "28:14" label="Time"
+    Stat "5'37\" /km" label="Avg Pace"
+    Stat "320" label="Calories"
+
+  Block "Splits" variant=title
+  List
+    ListItem "Km 1" after="5'30\""
+    ListItem "Km 2" after="5'35\""
+    ListItem "Km 3" after="5'40\""
+    ListItem "Km 4" after="5'32\""
+    ListItem "Km 5" after="5'25\"" badge="Fastest" badgeColor=warning

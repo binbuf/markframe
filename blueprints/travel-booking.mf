@@ -1,0 +1,283 @@
+// Travel Booking
+app
+  tabbar
+    tab "Search" icon=search -> search
+    tab "Watchlist" icon=eye -> watchlist
+    tab "Trips" icon=airplane -> trips
+    tab "Profile" icon=person -> profile
+
+---
+
+view search
+  Navbar "Search"
+  
+  Block
+    Segmented options=[Flights, Hotels, Cars] active=0
+
+  // Main Search Card
+  Card
+    Row gap=8 mb=4
+      Chip "Round-trip" outline
+      Chip "1 Adult" outline
+      Chip "Economy" outline
+
+    List flush outline
+      ListItem "New York (JFK)" media=navigate
+      ListItem "London (LHR)" media=location
+    
+    Spacer 8
+    
+    Row gap=8
+      Button "Mar 15" variant=outline icon=calendar fill
+      Button "Mar 22" variant=outline icon=calendar fill
+
+    Spacer 16
+    Button "Search Flights" large rounded raised -> results
+
+  Block "Recent Searches" variant=title
+  Row gap=12 scroll
+    Chip "JFK → LHR" media=time
+    Chip "SFO → TYO" media=time
+    Chip "LAX → NYC" media=time
+
+  Block "Explore Destinations" variant=title
+  Row gap=16 scroll
+    MediaCard "Tokyo" subtitle="From $890" image=city width=160 imageHeight=200
+    MediaCard "Paris" subtitle="From $650" image=travel width=160 imageHeight=200
+    MediaCard "Bali" subtitle="From $920" image=nature width=160 imageHeight=200
+
+---
+
+view results label="NYC ⇄ LHR"
+  Navbar "NYC ⇄ LHR" subtitle="Mar 15 - Mar 22 • 1 Adult" backButton -> search
+  Toast "Search complete: 234 results found"
+
+  // Kayak-style Sort Bar
+  Block className="bg-gray-100 !p-1 !m-2 rounded-lg"
+    Row gap=0
+      Button "Best\n$650 • 7h" variant=text className="flex-1 text-center text-xs"
+      Button "Cheapest\n$620 • 14h" variant=fill color=white className="flex-1 text-center text-xs shadow-sm text-black"
+      Button "Fastest\n$850 • 6h" variant=text className="flex-1 text-center text-xs"
+
+  Block "234 results" variant=caption
+
+  // Result 1: The "Cheapest" Deal
+  Card
+    Row justify=between
+      Badge "Cheapest" color=green
+      Icon "heart-outline" color=gray
+    
+    Spacer 8
+    
+    // Outbound
+    Row justify=between align=center
+      Column
+        Stat "18:00" label="JFK"
+      Column align=center
+        Text "7h 05m" variant=caption
+        Divider width=48 spacing=4
+        Text "Non-stop" variant=caption color=green
+      Column align=end
+        Stat "06:05+1" label="LHR"
+    
+    Row gap=8 align=center mt=2
+      Icon "airplane" size=16
+      Text "Skyline Airways" variant=caption
+    
+    Spacer 12
+    Divider
+    Spacer 12
+    
+    // Return
+    Row justify=between align=center
+      Column
+        Stat "10:30" label="LHR"
+      Column align=center
+        Text "8h 15m" variant=caption
+        Divider width=48 spacing=4
+        Text "Non-stop" variant=caption color=green
+      Column align=end
+        Stat "13:45" label="JFK"
+
+    Row gap=8 align=center mt=2
+      Icon "airplane" size=16
+      Text "Skyline Airways" variant=caption
+
+    Spacer 12
+    Divider
+    Spacer 12
+
+    Row justify=between align=center
+      Column
+        Text "$620" bold size=2xl
+        Text "Economy Light" variant=caption
+      Button "View Deal" -> details
+
+  Fab "filter" text="Filter" position=center-bottom
+
+---
+
+view details label="Itinerary"
+  Navbar "Flight Details" backButton -> results
+    Icon "share-outline"
+
+  // Price Summary
+  Block bg=blue-600 color=white
+    Row justify=between align=end
+      Column
+        Text "Total Price" variant=caption color=blue-100
+        Text "$620" bold size=3xl
+      Button "Book Now" color=white className="text-blue-600" -> confirmation
+
+  Tabs tabs=[Itinerary, Fare Rules, Bags] active=0
+
+  Block "Outbound • Mar 15" variant=title
+  Card
+    Row gap=12
+      IconCircle airplane size=40 bg=gray-100
+      Column
+        Text "Skyline Airways VS26" bold
+        Text "Boeing 787-9 Dreamliner" variant=caption
+
+    Spacer 16
+    
+    Row
+      Column align=center
+        Text "18:00" bold
+        Text "JFK" variant=caption
+        Spacer 24
+        Text "7h 05m" variant=caption className="rotate-90"
+        Spacer 24
+        Text "06:05" bold
+        Text "LHR" variant=caption
+      
+      Spacer 16
+      
+      // Timeline visual
+      Column align=center fill
+        Icon "ellipse" size=12 color=blue
+        Block className="w-0.5 h-16 bg-blue-200 !p-0 !m-0"
+        Icon "ellipse" size=12 color=blue
+
+      Column fill
+        Text "New York" bold
+        Text "Terminal 4" variant=caption
+        Spacer 40
+        Text "London" bold
+        Text "Terminal 3" variant=caption
+  
+  Block "Return • Mar 22" variant=title
+  Card
+    Row gap=12
+      IconCircle airplane size=40 bg=gray-100
+      Column
+        Text "Skyline Airways VS137" bold
+        Text "Airbus A350-1000" variant=caption
+
+    Spacer 16
+    
+    Row
+      Column align=center
+        Text "10:30" bold
+        Text "LHR" variant=caption
+        Spacer 24
+        Text "8h 15m" variant=caption className="rotate-90"
+        Spacer 24
+        Text "13:45" bold
+        Text "JFK" variant=caption
+      
+      Spacer 16
+      
+      Column align=center fill
+        Icon "ellipse" size=12 color=blue
+        Block className="w-0.5 h-16 bg-blue-200 !p-0 !m-0"
+        Icon "ellipse" size=12 color=blue
+
+      Column fill
+        Text "London" bold
+        Text "Terminal 3" variant=caption
+        Spacer 40
+        Text "New York" bold
+        Text "Terminal 4" variant=caption
+
+---
+
+view confirmation
+  Navbar "Booking" backButton -> details
+
+  Center fill p=24
+    IconCircle checkmark-circle size=80 color=green bg=green-100
+    Spacer 24
+    Text "Booking Confirmed!" variant=title
+    Text "Reference: VIR-88X" bold size=xl
+    Spacer 16
+    Text "We've sent a confirmation email to user@example.com" align=center variant=body color=gray
+    
+    Spacer 32
+    List inset strong className="w-full"
+      ListItem "Add to Calendar" media=calendar link
+      ListItem "Share Trip" media=share-outline link
+    
+    Spacer 24
+    Button "Done" large rounded -> search
+
+---
+
+view watchlist label="Watchlist"
+  Navbar "Watchlist"
+  
+  Block "Price Alerts" variant=title
+  
+  Card
+    Row justify=between
+      Text "NYC ⇄ PAR" bold
+      Switch checked
+    Text "Apr 10 - Apr 17" variant=caption
+    Spacer 8
+    Text "Current best: $650" color=green
+    Text "Target: $600" variant=caption
+
+  Card
+    Row justify=between
+      Text "SFO ⇄ TYO" bold
+      Switch checked
+    Text "May 01 - May 15" variant=caption
+    Spacer 8
+    Text "Current best: $1,200" color=orange
+    Text "Target: $900" variant=caption
+
+---
+
+view trips label="Trips"
+  Navbar "My Trips"
+
+  Tabs tabs=[Upcoming, Past, Cancelled] active=0
+
+  Block
+    Card "London Trip" subtitle="Mar 15 - Mar 22"
+      Row gap=8 mt=4
+        Chip "Confirmed" color=green
+        Chip "Flight"
+        Chip "Hotel"
+      Spacer 12
+      Row justify=between align=center
+        Row gap=8 align=center
+          Icon "airplane" size=16
+          Text "VS26 • VS137" variant=caption
+        Button "View" small variant=outline -> details
+
+---
+
+view profile
+  Navbar "Profile"
+  
+  List inset strong
+    ListItem "Daniel" subtitle="Genius Level 3"
+      Avatar gender=male size=40
+    
+  Block "Settings" variant=title
+  List inset strong
+    ListItem "Preferences" media=options
+    ListItem "Currency" after="USD ($)" media=cash
+    ListItem "Notifications" media=notifications
+    ListItem "Sign Out" color=red media=log-out

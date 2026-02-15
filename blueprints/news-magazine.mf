@@ -1,0 +1,176 @@
+// News Magazine
+app
+  tabbar
+    tab "Top Stories" icon=newspaper -> home
+    tab "Video" icon=play-circle -> video-feed
+    tab "My News" icon=bookmark -> my-news
+    tab "Search" icon=search -> search
+
+---
+
+view home
+  Navbar "Global News"
+    Icon "person-circle" -> profile
+
+  // Breaking News Banner
+  Block bg=red-700 color=white p=2 mx=0
+    Row align=center gap=8
+      Badge "LIVE" color=white className="text-red-700 font-bold"
+      Text "American Spaceship successfully lands on Mars surface for the first time." variant=caption bold color=white
+
+  // Hero Story
+  Image "tech" height=240 fit=cover -> article-view
+  Block
+    Text "Humanity's Giant Leap: First Crew Lands on Red Planet" variant=title size=2xl bold leading=tight
+    Text "Space • 15m ago" variant=caption color=red bold
+    Spacer 8
+    Text "NASA confirms successful touchdown at Jezero Crater. Mission Control erupts in cheers as telemetry confirms stable orbit and landing." variant=body color=gray
+    Spacer 12
+    Row gap=16
+      Link "Live Updates" icon=radio color=red
+      Link "Photo Gallery" icon=images
+
+  Divider
+
+  // Top Stories List
+  Block "Top Stories" variant=title
+  List
+    ListItem "Global Markets Rally on Tech Earnings" subtitle="Finance • 1h ago" media="trending-up" chevron link -> article-view
+    ListItem "New Electric Vehicle Battery Triples Range" subtitle="Technology • 2h ago" media="battery-charging" chevron link -> article-view
+    ListItem "Olympic Committee Announces 2030 Host" subtitle="Sport • 3h ago" media="medal" chevron link -> article-view
+
+  // Video Section (Dark Mode Style)
+  Block bg=gray-900 py=6 mt=4 className="text-white"
+    Block "Watch Now" variant=title mb=2 className="text-white"
+    Row gap=16 scroll pl=4
+      MediaCard "President's Address" subtitle="12:45" image=city width=240 imageHeight=140 className="bg-gray-800 text-white border-gray-700" -> article-view
+      MediaCard "Weather Warning" subtitle="03:20" image=nature width=240 imageHeight=140 className="bg-gray-800 text-white border-gray-700" -> article-view
+      MediaCard "Tech Talk: AI" subtitle="08:15" image=tech width=240 imageHeight=140 className="bg-gray-800 text-white border-gray-700" -> article-view
+
+  // World News (Horizontal Tiles)
+  Block "World News" variant=title
+  Row gap=12 scroll pl=4
+    Card "Europe Treaty" subtitle="Politics" width=160
+      Image "city" height=100 fit=cover rounded mb=2
+      Text "Leaders meet in Brussels for emergency summit." variant=caption
+    Card "Asia Tech Boom" subtitle="Business" width=160
+      Image "tech" height=100 fit=cover rounded mb=2
+      Text "Startups in Singapore reach record funding." variant=caption
+    Card "Amazon Protection" subtitle="Environment" width=160
+      Image "nature" height=100 fit=cover rounded mb=2
+      Text "New laws enacted to preserve rainforest." variant=caption
+
+  // Sport Section (Grid)
+  Block "Sport" variant=title
+  Grid cols=2 gap=12 px=4
+    MediaCard "Championship Final" subtitle="Football" image=travel imageHeight=100 -> article-view
+    MediaCard "F1: Results" subtitle="Racing" image=tech imageHeight=100 -> article-view
+    MediaCard "Tennis Open Begins" subtitle="Tennis" image=nature imageHeight=100 -> article-view
+    MediaCard "NBA Trade Deadline" subtitle="Basketball" image=city imageHeight=100 -> article-view
+
+  // Most Read (Numbered List)
+  Block "Most Read" variant=title
+  List
+    ListItem "1. The 10 Best Places to Live in 2026" subtitle="Lifestyle" chevron link
+    ListItem "2. Why Your Coffee is Getting More Expensive" subtitle="Economy" chevron link
+    ListItem "3. Review: The New Phone 16 Pro" subtitle="Tech" chevron link
+    ListItem "4. Hidden Gems of Italy" subtitle="Travel" chevron link
+    ListItem "5. Understanding the New Tax Laws" subtitle="Finance" chevron link
+
+  Spacer 32
+
+---
+
+view article-view label="Article"
+  Navbar "Space" backButton -> home
+    Icon "share-social"
+    Icon "bookmark-outline"
+
+  // Video Player Placeholder
+  Block bg=black ratio=video align=center justify=center
+    Icon "play-circle" size=64 color=white
+
+  Block
+    Text "Humanity's Giant Leap: First Crew Lands on Red Planet" variant=title size=3xl bold leading=tight
+    Spacer 8
+    Row gap=8 align=center
+      Avatar gender=female size=40
+      Column
+        Text "By Sarah Connors" variant=caption bold
+        Text "Science Correspondent • 15m ago" variant=caption color=gray
+
+  Divider
+
+  Block
+    Text "CAPE CANAVERAL — In a moment that will be etched in history books forever, the Ares IV mission has successfully touched down on the Martian surface." variant=body size=lg leading=relaxed
+    Spacer 16
+    Text "The landing sequence, dubbed 'The Seven Minutes of Terror', went flawlessly. Telemetry data received at Mission Control in Houston confirmed that the lander, named 'Endeavour', is stable and all systems are nominal." variant=body leading=relaxed
+    
+    // Inline Image
+    Image "travel" height=200 fit=cover rounded my=6
+    Text "First image transmitted from the landing site." variant=caption align=center color=gray
+
+    Text "The crew of six astronauts reports feeling 'exhausted but exhilarated'. Commander Lewis radioed, 'Houston, Endeavour has arrived. The view is spectacular.'" variant=body leading=relaxed
+    Spacer 16
+    Block pl=4 py=2 mt=4 mb=4 bg=red-50 className="border-l-4 border-red-600"
+      Text "This is not just a victory for the United States, but for all of humanity. We have bridged the gap between worlds." variant=body italic bold color=gray-800
+
+    Text "Over the next 18 months, the crew will conduct scientific experiments, search for signs of past microbial life, and test technologies for future colonization." variant=body leading=relaxed
+
+  Block "Related Topics" variant=title
+  Row gap=8 scroll
+    Chip "Mars" outline
+    Chip "NASA" outline
+    Chip "Space Exploration" outline
+
+---
+
+view video-feed
+  Navbar "Video"
+  
+  // Video Player Placeholder
+  Block bg=black h=64 align=center justify=center className="sticky top-0 z-10"
+    Preloader color=white size=48
+
+  // Video List
+  Block bg=gray-900 min-h-screen color=white p=4
+    MediaCard "Breaking: Mars Landing" subtitle="Live Coverage" image=travel width=100% imageHeight=220 className="bg-gray-800 border-gray-700 mb-4 !mx-0"
+    MediaCard "Market Watch: Tech Stocks" subtitle="Finance • 5m ago" image=tech width=100% imageHeight=220 className="bg-gray-800 border-gray-700 mb-4 !mx-0"
+    MediaCard "Weather Alert" subtitle="Weather • 1h ago" image=nature width=100% imageHeight=220 className="bg-gray-800 border-gray-700 mb-4 !mx-0"
+
+---
+
+view my-news
+  Navbar "My News"
+  Block "Following" variant=title
+  Row gap=12 scroll
+    Column align=center
+      Avatar size=64 border=red
+      Text "Tech" variant=caption
+    Column align=center
+      Avatar size=64
+      Text "Politics" variant=caption
+    Column align=center
+      Avatar size=64
+      Text "Science" variant=caption
+    Column align=center
+      Avatar size=64
+      Text "Health" variant=caption
+
+  Block "Saved Stories" variant=title
+  List
+    ListItem "The Future of AI" subtitle="Technology" media="hardware-chip" chevron link
+    ListItem "Healthy Eating Guide" subtitle="Lifestyle" media="nutrition" chevron link
+
+---
+
+view search
+  Navbar "Search"
+  TextField "Search news, topics, and videos" type=search
+  Block "Trending Topics" variant=title
+  Row gap=8 wrap
+    Chip "Mars Landing" color=red
+    Chip "Election 2026"
+    Chip "Super Bowl"
+    Chip "Climate Summit"
+    Chip "New Phone"

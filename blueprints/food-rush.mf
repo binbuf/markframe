@@ -1,0 +1,231 @@
+// Food Rush
+app
+  tabbar
+    tab "Home" icon=home -> home
+    tab "Grocery" icon=basket -> grocery
+    tab "Orders" icon=receipt -> orders
+    tab "Account" icon=person -> account
+
+---
+
+view home
+  Navbar "123 Main St" subtitle="Delivery • Now"
+
+  // Categories / Filters
+  Block
+    Row gap=8 scroll
+      Chip "Offers" media=pricetag color=green
+      Chip "Over 4.5"
+      Chip "Under 30 min"
+      Chip "Fast Food"
+      Chip "Healthy"
+      Chip "Asian"
+
+  // Featured Carousel
+  Block "Featured Partners" variant=title
+  Row gap=16 scroll
+    MediaCard "Burger Castle" subtitle="Free delivery over $20" image=food width=264 rating=4.5
+      Row gap=4 align=center
+        Icon "time" size=12 color=gray
+        Text "20-30 min" variant=caption
+
+    MediaCard "Sushi Place" subtitle="Buy 1 Get 1 Free" image=food width=264 rating=4.8
+      Row gap=4 align=center
+        Icon "time" size=12 color=gray
+        Text "30-45 min" variant=caption
+
+    MediaCard "Pizza Palace" subtitle="20% off entire order" image=food width=264 rating=4.2
+      Row gap=4 align=center
+        Icon "time" size=12 color=gray
+        Text "25-40 min" variant=caption
+
+  // Restaurant List
+  Block "All Restaurants" variant=title
+
+  MediaCard "McDouglas" subtitle="$0.99 Delivery • 15-25 min" image=food imageHeight=160 rating=4.3 tags=[Burgers, Fast Food] -> restaurant-detail
+
+  MediaCard "Star Coffee" subtitle="$1.49 Delivery • 10-20 min" image=food imageHeight=160 rating=4.7 tags=[Coffee, Breakfast] -> restaurant-detail
+
+  MediaCard "Guac & Roll" subtitle="$2.99 Delivery • 30-45 min" image=food imageHeight=160 rating=4.6 tags=[Mexican, Healthy] -> restaurant-detail
+
+---
+
+view restaurant-detail label="Details"
+  Navbar "McDouglas" backButton -> home
+    Icon "heart-outline"
+    Icon "search"
+
+  Image "food" fit=cover height=192
+
+  Block
+    Text "McDouglas" variant=title size=24
+    Row gap=8 align=center
+      Icon "star" color=gold size=16
+      Text "4.3 (500+ ratings)" variant=caption
+      Text "•" variant=caption
+      Text "Burgers, Fast Food" variant=caption
+    Spacer 8
+    Row gap=16
+      Column align=center
+        Text "Delivery" variant=caption bold
+        Text "15-25 min" variant=caption
+      Column align=center
+        Text "Fee" variant=caption bold
+        Text "$0.99" variant=caption
+
+  Divider
+
+  Block "Menu" variant=title
+  Segmented options=[Popular, Meals, Drinks, Sides] active=0
+
+  Block "Popular Items" variant=title
+  List
+    ListItem "Big Mac Meal" subtitle="$10.99 • 1080 Cal" chevron link -> item-detail
+      Image "food" size=64 rounded fit=cover
+    ListItem "10 pc. Chicken McNuggets" subtitle="$6.49 • 450 Cal" chevron link -> item-detail
+      Image "food" size=64 rounded fit=cover
+    ListItem "Quarter Pounder with Cheese" subtitle="$5.79 • 520 Cal" chevron link -> item-detail
+      Image "food" size=64 rounded fit=cover
+
+  Fab "cart" position=right-bottom text="2 items • $17.48" -> cart
+
+---
+
+view item-detail label="Item"
+  Navbar "Big Mac Meal" backButton -> restaurant-detail
+
+  Image "food" fit=cover height=256
+
+  Block
+    Text "Big Mac Meal" variant=title
+    Text "$10.99" bold size=xl
+    Spacer 8
+    Text "Mouthwatering perfection starts with two 100% pure beef patties and Big Mac sauce sandwiched between a sesame seed bun." variant=body color=gray
+
+  Divider
+
+  Block "Options" variant=title
+  List
+    ListGroup
+      ListItem "Choose your side" header
+      ListItem "Medium Fries"
+        Radio name=side checked
+      ListItem "Large Fries (+$0.80)"
+        Radio name=side
+      ListItem "Apple Slices"
+        Radio name=side
+
+    ListGroup
+      ListItem "Choose your drink" header
+      ListItem "Coca-Cola"
+        Radio name=drink checked
+      ListItem "Sprite"
+        Radio name=drink
+      ListItem "Dr Pepper"
+        Radio name=drink
+
+  Block
+    Row gap=16
+      Stepper 1
+      Button "Add to Order - $10.99" large rounded raised fill
+
+---
+
+view grocery
+  Navbar "Grocery & Convenience"
+
+  Block
+    Row gap=12 scroll
+      IconCircle basket label="Grocery" color=green bg=green-100
+      IconCircle wine label="Alcohol" color=blue bg=blue-100
+      IconCircle paw label="Pets" color=purple bg=purple-100
+      IconCircle flower label="Flowers" color=orange bg=orange-100
+
+  Block "Stores near you" variant=title
+  Row gap=16 scroll
+    MediaCard "QuickStop" subtitle="25 min • $1.99 delivery" image=city width=264
+    MediaCard "GreenCross" subtitle="35 min • $3.99 delivery" image=city width=264
+    MediaCard "Organic Greens" subtitle="60 min • Free delivery" image=food width=264
+
+---
+
+view orders
+  Navbar "Orders"
+  Toast "Your order is on its way!"
+
+  Tabs active=0
+    Tab "Active"
+    Tab "Completed"
+
+  Block "Current Order" variant=title
+  Card outline
+    Row gap=12 align=center
+      Icon "bicycle" size=32 color=blue
+      Column
+        Text "McDouglas" variant=subtitle
+        Text "Arriving in 15 mins" variant=caption
+        ProgressBar 50 color=blue height=4
+    Spacer 12
+    Button "Track Order" variant=outline small
+
+  Block "Past Orders" variant=title
+  List
+    ListItem "Star Coffee" subtitle="Feb 8 • $12.45 • 3 items" after="Reorder" chevron link
+    ListItem "Guac & Roll" subtitle="Feb 5 • $24.10 • 2 items" after="Reorder" chevron link
+    ListItem "Burger Castle" subtitle="Jan 28 • $18.90 • 1 item" after="Reorder" chevron link
+
+---
+
+view account
+  Navbar "Account"
+
+  Block align=center
+    Avatar gender=male size=80
+    Spacer 8
+    Text "John Doe" variant=title
+    Text "john.doe@example.com" variant=caption
+
+  List inset strong
+    ListItem "Payment Methods" media=card chevron link
+    ListItem "Addresses" media=map chevron link
+    ListItem "Notifications" media=notifications chevron link
+
+  List inset strong
+    ListItem "Get Help" media=help-circle chevron link
+    ListItem "About" media=information-circle chevron link
+    ListItem "Log Out" media=log-out color=red
+
+---
+
+view cart
+  Navbar "Cart" backButton -> restaurant-detail
+
+  Block "Your Items" variant=title
+  List
+    ListItem "Big Mac Meal" subtitle="Medium Fries, Coke" after="$10.99"
+      Stepper 1 small
+    ListItem "10 pc. Chicken McNuggets" after="$6.49"
+      Stepper 1 small
+
+  Divider
+
+  Block
+    Row justify=between
+      Text "Subtotal"
+      Text "$17.48"
+    Row justify=between
+      Text "Delivery Fee"
+      Text "$0.99"
+    Row justify=between
+      Text "Taxes & Fees"
+      Text "$2.50"
+    Spacer 8
+    Divider
+    Spacer 8
+    Row justify=between
+      Text "Total" variant=title
+      Text "$20.97" variant=title
+
+  Spacer 32
+  Block
+    Button "Place Order" large rounded raised

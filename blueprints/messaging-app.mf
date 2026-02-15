@@ -1,0 +1,146 @@
+// Modern Messaging App
+
+view chats label="Messages"
+  // Header with Search and Profile
+  Navbar "Messages"
+    Link "" icon=search -> search-messages
+    Link "" icon=person-circle -> profile-menu
+
+  // Main Conversation List
+  List
+    ListItem "Alice Johnson" subtitle="See you tomorrow! 👋" after="10:30 AM" link -> chat-detail
+      Avatar gender=female size=48
+    
+    ListItem "Bob Wilson" subtitle="📸 Photo" after="9:15 AM" link -> chat-detail
+      Avatar gender=male size=48
+      Badge "2" color=blue
+
+    ListItem "Family Group" subtitle="Mom: Dinner at 6?" after="Yesterday" link -> chat-detail
+      Avatar placeholder=people size=48
+
+    ListItem "Carol Williams" subtitle="Missed call" after="Mon" link -> chat-detail
+      Avatar gender=female size=48
+
+    ListItem "David Chen" subtitle="Here is the document" after="Sun" link -> chat-detail
+      Avatar gender=male size=48
+
+    ListItem "Marketing Team" subtitle="Sarah: Let's sync later" after="Feb 12" link -> chat-detail
+      Avatar placeholder=people size=48
+      
+    ListItem "Uber" subtitle="Your ride is arriving" after="Feb 10" link -> chat-detail
+      Avatar placeholder=car size=48
+
+    ListItem "Google" subtitle="Security alert" after="Feb 08" link -> chat-detail
+      Avatar placeholder=logo-google size=48
+
+    ListItem "Mom" subtitle="Happy Birthday! 🎂" after="Feb 05" link -> chat-detail
+      Avatar placeholder=person size=48
+
+    ListItem "Bank of America" subtitle="Statement available" after="Feb 01" link -> chat-detail
+      Avatar placeholder=card size=48
+
+    ListItem "Gym Buddy" subtitle="Leg day tomorrow?" after="Jan 28" link -> chat-detail
+      Avatar gender=male size=48
+
+    ListItem "Amazon" subtitle="Your package has been delivered" after="Jan 25" link -> chat-detail
+      Avatar placeholder=cube size=48
+
+    ListItem "Netflix" subtitle="New sign-in detected" after="Jan 20" link -> chat-detail
+      Avatar placeholder=tv size=48
+
+    ListItem "Dr. Smith" subtitle="Appointment reminder" after="Jan 15" link -> chat-detail
+      Avatar gender=male size=48
+
+    ListItem "Recruiter" subtitle="Thanks for your application" after="Jan 10" link -> chat-detail
+      Avatar gender=female size=48
+
+    ListItem "Landlord" subtitle="Rent received" after="Jan 01" link -> chat-detail
+      Avatar gender=male size=48
+
+  // Floating Action Button
+  Fab "chatbubbles" text="Start chat" position=right-bottom -> new-chat
+
+  // Profile Menu Overlay
+  Sheet "Account" id=profile-menu
+    Block align=center p=4
+      Text "Hi, User!" variant=title
+      Spacer 8
+      Button "Manage your Account" variant=outline rounded small
+
+    Block "More from this app" variant=title
+
+    List
+      ListItem "Your Profile" media=person link
+      ListItem "Archived" media=archive link
+      ListItem "Spam & Blocked" media=alert-circle link
+      ListItem "Mark all as read" media=checkmark-done link
+      ListItem "Device pairing" media=qr-code link
+
+    List
+      ListItem "Your data in Messages" media=server link
+      ListItem "Messages settings" media=settings link
+      ListItem "Help & feedback" media=help-circle link
+
+---
+
+view search-messages label="Search"
+  // Custom Search Header
+  Row align=center p=2 gap=2 borderBottom
+    Link "" icon=arrow-back -> chats
+    TextField "Search messages" type=search fill className="bg-gray-100 border-none rounded-full"
+
+  // Filter Tags
+  Row p=2 gap=2 scroll
+    Chip "Unread" outline
+    Chip "Known" outline
+    Chip "Unknown" outline
+    Chip "Starred" outline
+    Chip "Images" outline
+    Chip "Videos" outline
+    Chip "Places" outline
+    Chip "Links" outline
+
+  // Placeholder Results
+  Block align=center p=8
+    Icon "search" size=48 color=gray-300
+    Text "Search for messages" color=gray
+
+---
+
+view chat-detail label="Chat"
+  Navbar "Alice Johnson" backButton -> chats
+    Link "Call" navbar icon=call
+    Link "Video" navbar icon=videocam
+
+  Block bg=gray-100 p=4 fill
+    Row justify=center mb=4
+      Chip "Today" color=gray outline
+
+    Message "Hey! Are you free for lunch?" time="10:30 AM" avatar
+    Message "Yes, absolutely! Where do you want to go?" time="10:31 AM" sent read
+    Message "How about that new Italian place downtown? 🍝" time="10:32 AM" avatar
+    Message "Perfect! See you there at 12:30. 👋" time="10:33 AM" sent read
+
+  Toolbar position=bottom className="bg-white border-t"
+    Row gap=8 align=center className="w-full"
+      Icon "add" size=24 color=blue
+      TextField "Message" type=text fill className="rounded-full bg-gray-100 px-4 py-2 border-none"
+      Icon "happy" size=24 color=blue
+      Icon "mic" size=24 color=blue
+
+---
+
+view new-chat label="New Chat"
+  Navbar "New conversation" backButton -> chats
+
+  Block p=2
+    TextField "To" placeholder="Type a name, phone number, or email" type=text
+
+  Block "Top contacts" variant=title
+  List
+    ListItem "Alice Johnson" subtitle="Mobile" link -> chat-detail
+      Avatar gender=female size=40
+    ListItem "Bob Wilson" subtitle="Mobile" link -> chat-detail
+      Avatar gender=male size=40
+    ListItem "Carol Williams" subtitle="Home" link -> chat-detail
+      Avatar gender=female size=40
