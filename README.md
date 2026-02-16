@@ -1,7 +1,7 @@
-# 📱 markframe
+# markframe
 
 <p align="center">
-  <img src="public/app.png" alt="markframe Preview" width="250">
+  <img src="public/app.png" alt="markframe Preview" width="128">
 </p>
 
 <p align="center">
@@ -19,9 +19,11 @@
 
 **markframe** is a specialized markup language and IDE that lets you build high-fidelity mobile user interfaces in seconds. Instead of wrestling with verbose JSON or complex UI builders, you write simple, indentation-based code and instantly see platform-accurate iOS and Android previews.
 
-[✨ Live Demo](#) | [📖 Language Spec](docs/Markframe-Language-Specification.md) | [🚀 Quick Start](#-getting-started) | [🧩 Components](#-component-catalog)
+<div align="center">
+  <video src="https://github.com/user-attachments/assets/d961fda2-94ea-4557-8509-3fbe9cfc79e2" autoplay loop muted playsinline style="width: 100%; display: block;"></video>
+</div>
 
-**[TODO: Video Example Here]**
+[✨ Live Demo](#) | [📖 Language Spec](docs/Markframe-Language-Specification.md) | [🚀 Quick Start](#-getting-started) | [🧩 Components](#-component-catalog)
 
 ## ✨ Key Features
 
@@ -162,5 +164,6 @@ Contributions are what make the open source community such an amazing place to l
 All media used in this project are the property of their respective owners and are used under their respective licenses.
 
 ## 📄 License
+
 
 Distributed under the MIT License. See `LICENSE` for more information.
