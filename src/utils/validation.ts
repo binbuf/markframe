@@ -52,8 +52,11 @@ export function validateMarkframe(content: string): ValidationResult {
   // Check for unknown component types
   const knownTypes = new Set(Object.keys(catalog));
   if (result.tree) {
-    for (const surface of result.tree.values()) {
-      checkNodeTypes(surface, knownTypes, warnings);
+    for (const { surfaceId } of result.surfaces) {
+      const surface = result.tree.get(surfaceId);
+      if (surface) {
+        checkNodeTypes(surface, knownTypes, warnings);
+      }
     }
   }
 

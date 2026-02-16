@@ -984,10 +984,11 @@ view profile
     expect(result.surfaces).toHaveLength(3)
 
     // Snapshot each view's component types
-    for (const [viewId, surface] of result.tree!) {
+    for (const { surfaceId } of result.surfaces) {
+      const surface = result.tree!.get(surfaceId)!
       const nodes = flatNodes(surface)
       expect({
-        viewId,
+        viewId: surfaceId,
         components: nodes.map(n => ({ type: n.type, props: n.props })),
       }).toMatchSnapshot()
     }
