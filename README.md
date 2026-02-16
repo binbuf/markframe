@@ -19,11 +19,9 @@
 
 **markframe** is a specialized markup language and IDE that lets you build high-fidelity mobile user interfaces in seconds. Instead of wrestling with verbose JSON or complex UI builders, you write simple, indentation-based code and instantly see platform-accurate iOS and Android previews.
 
-<div align="center">
-  <video src="https://github.com/user-attachments/assets/d961fda2-94ea-4557-8509-3fbe9cfc79e2" autoplay loop muted playsinline style="width: 100%; display: block;"></video>
-</div>
+![demo](https://github.com/user-attachments/assets/e66dff00-669e-41d4-85b5-448cbe3d9dbc)
 
-[✨ Live Demo](#) | [📖 Language Spec](docs/Markframe-Language-Specification.md) | [🚀 Quick Start](#-getting-started) | [🧩 Components](#-component-catalog)
+[✨ Live App](https://binbuf.github.io/markframe) | [📖 Language Spec](docs/Markframe-Language-Specification.md) | [🚀 Quick Start](#-getting-started) | [🧩 Components](#-component-catalog)
 
 ## ✨ Key Features
 
@@ -167,3 +165,4 @@ All media used in this project are the property of their respective owners and a
 
 
 Distributed under the MIT License. See `LICENSE` for more information.
+
