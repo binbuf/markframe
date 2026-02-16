@@ -75,7 +75,7 @@ const Toolbar: React.FC<ToolbarProps> = ({
         </button>
   
         <div className="flex items-center gap-2 select-none mr-4">
-          <img src="app.png" alt="Logo" className="w-8 h-8 object-cover rounded-lg" />          
+          <img src={`${import.meta.env.BASE_URL}app.png`} alt="Logo" className="w-8 h-8 object-cover rounded-lg" />          
           <span className="font-semibold tracking-wide">markframe</span>
         </div>
         

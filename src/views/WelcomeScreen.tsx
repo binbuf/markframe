@@ -16,7 +16,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onNewProject, onOpenFile 
         {/* Logo / Header */}
         <div className="mb-6 flex flex-col items-center">
           <div className="w-16 h-16 flex items-center justify-center mb-4">
-            <img src="app.png" alt="Logo" className="w-full h-full object-contain" />
+            <img src={`${import.meta.env.BASE_URL}app.png`} alt="Logo" className="w-full h-full object-contain" />
           </div>
           <h1 className="text-3xl font-bold text-white mb-2">markframe</h1>
           <p className="text-slate-400">Declarative mobile UI, instantly previewed.</p>

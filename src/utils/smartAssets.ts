@@ -5,17 +5,19 @@
  * Images: Category keywords resolve to local photos. URLs pass through.
  */
 
-const MALE_AVATARS = Array.from({ length: 6 }, (_, i) => `/assets/avatars/male-${i + 1}.jpg`);
-const FEMALE_AVATARS = Array.from({ length: 6 }, (_, i) => `/assets/avatars/female-${i + 1}.jpg`);
+const BASE = import.meta.env.BASE_URL;
+
+const MALE_AVATARS = Array.from({ length: 6 }, (_, i) => `${BASE}assets/avatars/male-${i + 1}.jpg`);
+const FEMALE_AVATARS = Array.from({ length: 6 }, (_, i) => `${BASE}assets/avatars/female-${i + 1}.jpg`);
 const ALL_AVATARS = [...MALE_AVATARS, ...FEMALE_AVATARS];
 
 const IMAGE_CATEGORIES: Record<string, string[]> = {
-  food: ['/assets/images/food-1.jpg', '/assets/images/food-2.jpg'],
-  nature: ['/assets/images/nature-1.jpg', '/assets/images/nature-2.jpg'],
-  city: ['/assets/images/city-1.jpg', '/assets/images/city-2.jpg'],
-  tech: ['/assets/images/tech-1.jpg', '/assets/images/tech-2.jpg'],
-  fashion: ['/assets/images/fashion-1.jpg', '/assets/images/fashion-2.jpg'],
-  travel: ['/assets/images/travel-1.jpg', '/assets/images/travel-2.jpg'],
+  food: [`${BASE}assets/images/food-1.jpg`, `${BASE}assets/images/food-2.jpg`],
+  nature: [`${BASE}assets/images/nature-1.jpg`, `${BASE}assets/images/nature-2.jpg`],
+  city: [`${BASE}assets/images/city-1.jpg`, `${BASE}assets/images/city-2.jpg`],
+  tech: [`${BASE}assets/images/tech-1.jpg`, `${BASE}assets/images/tech-2.jpg`],
+  fashion: [`${BASE}assets/images/fashion-1.jpg`, `${BASE}assets/images/fashion-2.jpg`],
+  travel: [`${BASE}assets/images/travel-1.jpg`, `${BASE}assets/images/travel-2.jpg`],
 };
 
 /** Deterministic hash from a string — same input always yields same number. */
