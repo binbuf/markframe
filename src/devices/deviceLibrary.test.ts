@@ -1,5 +1,4 @@
 import { devices, getDeviceById, DEFAULT_DEVICE, iPhone15Pro } from './deviceLibrary';
-import type { DeviceSpec } from '../types/device';
 
 // ===========================================================================
 // 1. Device Library Data Integrity

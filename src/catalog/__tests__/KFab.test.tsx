@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import KFab from '../KFab';
 import { makeNode, renderWithProviders } from '../../test/helpers';
 

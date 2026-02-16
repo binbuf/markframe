@@ -120,7 +120,7 @@ describe('DevicePreview', () => {
 
   describe('zoom clamping', () => {
     it('clamps zoom to minimum 0.5', () => {
-      const { container } = render(
+      render(
         <DevicePreview
           activeSurface={null}
           theme="ios"
@@ -218,7 +218,7 @@ describe('DevicePreview', () => {
 
   describe('orientation', () => {
     it('swaps dimensions in landscape mode', () => {
-      const { container } = render(
+      render(
         <DevicePreview
           activeSurface={null}
           theme="ios"
@@ -297,7 +297,6 @@ describe('DevicePreview', () => {
 
   describe('landscape device features', () => {
     it('renders landscape Dynamic Island', () => {
-      const surface = makeSurface();
       const { container } = render(
         <DevicePreview
           activeSurface={null}

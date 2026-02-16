@@ -12,7 +12,7 @@ describe('badgeColorMap', () => {
   });
 
   it('each entry has bg and text properties', () => {
-    for (const [key, value] of Object.entries(badgeColorMap)) {
+    for (const [_key, value] of Object.entries(badgeColorMap)) {
       expect(value).toHaveProperty('bg');
       expect(value).toHaveProperty('text');
       expect(typeof value.bg).toBe('string');

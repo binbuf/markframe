@@ -19,7 +19,7 @@ const KToast: FC<ComponentProps> = ({ node }) => {
 
   // Track whether the static (auto-show) toast has been auto-dismissed
   const [autoDismissed, setAutoDismissed] = useState(false);
-  const timerRef = useRef<ReturnType<typeof setTimeout>>();
+  const timerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   // Static toasts show on mount then auto-dismiss; dynamic toasts show when triggered
   const opened = isDynamicOpen || (!explicitlyHidden && !autoDismissed);

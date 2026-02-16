@@ -1,6 +1,6 @@
-import { render, screen, act } from '@testing-library/react';
+import { screen, act } from '@testing-library/react';
 import KToast from '../KToast';
-import { makeNode, AllProviders, renderWithProviders } from '../../test/helpers';
+import { makeNode, renderWithProviders } from '../../test/helpers';
 
 function renderToast(props: Record<string, unknown> = {}) {
   const node = makeNode({ type: 'Toast', props });

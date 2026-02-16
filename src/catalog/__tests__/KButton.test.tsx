@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import KButton from '../KButton';
 import { makeNode, renderWithProviders } from '../../test/helpers';
 

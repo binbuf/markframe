@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import KListItem from '../KListItem';
 import { makeNode, renderWithProviders } from '../../test/helpers';
 

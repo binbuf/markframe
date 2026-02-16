@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { renderNode } from '../renderNode';
 import { makeNode, AllProviders } from '../../test/helpers';
-import catalog from '../index';
 
 // renderNode requires overlay/navigation/tree/device contexts via child components
 function renderInProviders(node: Parameters<typeof renderNode>[0], theme: 'ios' | 'material' = 'ios') {

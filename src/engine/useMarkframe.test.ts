@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react';
-import { useMarkframe, ZOOM_LEVELS } from './usemarkframe';
+import { useMarkframe, ZOOM_LEVELS } from './useMarkframe';
 
 // Mock file access module
 vi.mock('../api/fileAccess', () => ({
@@ -11,7 +11,7 @@ vi.mock('../api/fileAccess', () => ({
 const localStorageMock = (() => {
   let store: Record<string, string> = {};
   return {
-    getItem: vi.fn((key: string) => store[key] ?? null),
+    getItem: vi.fn((key: string): string | null => store[key] ?? null),
     setItem: vi.fn((key: string, value: string) => { store[key] = value; }),
     removeItem: vi.fn((key: string) => { delete store[key]; }),
     clear: vi.fn(() => { store = {}; }),
@@ -149,7 +149,7 @@ describe('useMarkframe', () => {
     });
 
     it('persists device selection to localStorage', () => {
-      const { result } = renderHook(() => useMarkframe(null));
+      renderHook(() => useMarkframe(null));
 
       // The hook should write the default device to localStorage
       expect(localStorageMock.setItem).toHaveBeenCalledWith(

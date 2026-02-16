@@ -1,10 +1,10 @@
-import { renderHook, act } from '@testing-library/react';
+import { renderHook } from '@testing-library/react';
 import { useNavigation, NavigationProvider } from '../NavigationContext';
 import { useDevice, DeviceProvider } from '../DeviceContext';
 import { useTree, TreeProvider } from '../TreeContext';
 import { testDevice, makeNode } from '../../test/helpers';
 import type { MarkframeNode } from '../../types/markframe';
-import { useState, type ReactNode } from 'react';
+import { type ReactNode } from 'react';
 
 describe('NavigationContext', () => {
   it('returns undefined without provider', () => {
@@ -56,7 +56,7 @@ describe('NavigationContext', () => {
     const navigate1 = vi.fn();
     const navigate2 = vi.fn();
 
-    const { result, rerender } = renderHook(() => useNavigation(), {
+    const { result } = renderHook(() => useNavigation(), {
       wrapper: ({ children }) => (
         <NavigationProvider value={navigate1}>{children}</NavigationProvider>
       ),

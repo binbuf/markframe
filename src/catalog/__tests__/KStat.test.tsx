@@ -45,7 +45,7 @@ describe('KStat', () => {
   });
 
   it('applies color to value with Tailwind color', () => {
-    const { container } = renderStat({ value: '100', color: 'green-300' });
+    renderStat({ value: '100', color: 'green-300' });
     const valueElement = screen.getByText('100');
     expect(valueElement).toHaveStyle({ color: '#86efac' }); // green-300
   });
@@ -57,7 +57,7 @@ describe('KStat', () => {
   });
 
   it('uses default grey color for label when labelColor not specified', () => {
-    const { container } = renderStat({ value: '100', label: 'Steps' });
+    renderStat({ value: '100', label: 'Steps' });
     const labelElement = screen.getByText('Steps');
     expect(labelElement).toHaveClass('text-gray-500');
   });

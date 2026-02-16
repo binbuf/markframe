@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import KLink from '../KLink';
 import { makeNode, renderWithProviders } from '../../test/helpers';
 

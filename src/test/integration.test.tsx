@@ -1,10 +1,15 @@
+/// <reference types="node" />
 import { render, screen } from '@testing-library/react';
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { parseMarkframe } from '../engine/markframeParser';
 import { renderNode } from '../catalog/renderNode';
 import { AllProviders } from './helpers';
 import type { MarkframeNode } from '../types/markframe';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -361,14 +366,14 @@ view home
 
 describe('Integration: Blueprint Smoke Tests', () => {
   const blueprintDir = path.resolve(__dirname, '../../blueprints');
-  const blueprintFiles = fs.readdirSync(blueprintDir).filter(f => f.endsWith('.mf'));
+  const blueprintFiles = fs.readdirSync(blueprintDir).filter((f: string) => f.endsWith('.mf'));
 
   // Verify we have the expected number of blueprints
   it('has at least 12 blueprint files', () => {
     expect(blueprintFiles.length).toBeGreaterThanOrEqual(12);
   });
 
-  describe.each(blueprintFiles)('blueprint: %s', (filename) => {
+  describe.each(blueprintFiles)('blueprint: %s', (filename: string) => {
     const source = fs.readFileSync(path.join(blueprintDir, filename), 'utf-8');
 
     it('parses without errors', () => {
