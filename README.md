@@ -21,8 +21,6 @@
 
 ![demo](https://github.com/user-attachments/assets/e66dff00-669e-41d4-85b5-448cbe3d9dbc)
 
-[✨ Live App](https://binbuf.github.io/markframe) | [📖 Language Spec](docs/Markframe-Language-Specification.md) | [🚀 Quick Start](#-getting-started) | [🧩 Components](#-component-catalog)
-
 ## ✨ Key Features
 
 - **🚅 Lightning Fast DSL** — Write a login screen in 6 lines, not 60. Indentation defines hierarchy automatically.
@@ -36,6 +34,11 @@
 - **🤖 AI-Friendly** — Designed specifically for LLMs to generate and humans to review easily.
 - **💾 Zero-Backend** — Fully client-side SPA using the browser's File System Access API for local file management.
 
+## [✨ Try It Out - Live App](https://binbuf.github.io/markframe)
+## [📖 Language Spec](docs/Markframe-Language-Specification.md)
+
+[🚀 Quick Start](#-getting-started) | [🧩 Components](#-component-catalog)
+
 ## 🤖 Built for AI
 
 Markframe is designed to be a native language for AI-driven UI generation.
@@ -46,33 +49,32 @@ Markframe is designed to be a native language for AI-driven UI generation.
       <table border="0" cellpadding="0" cellspacing="0" width="100%">
         <tr>
           <td style="border: none;">
-            <strong>🪙 Token Efficiency</strong><br>
-            Write complex interfaces with less tokens.<br> 
-            Visual and change tokens with ease. Allow your<br> 
-            LLMs to reason about entire app UI/UX and provide<br> 
-            a good result within a single context window.
+            <strong>💪 Token Efficiency</strong><br><br>
+            Write complex interfaces with less tokens while letting<br>
+            LLMs do the heavy lifting.
           </td>
         </tr>
         <tr>
           <td style="border: none;">
-            <strong>📐 Structural Logic</strong><br>
-            The indentation-based syntax mirrors patterns<br>
-            LLMs already understand.
+            <strong>📐 Structural Logic</strong><br><br>
+            Indentation-based syntax mirrors patterns LLMs already<br>
+            understand. Visualize and change your mock ups with<br>
+            ease.
           </td>
         </tr>
         <tr>
           <td style="border: none;">
-            <strong>⚡ Rapid Iteration</strong><br>
-            With a near instant live render, you can quickly<br>
-            see changes and iterate at your pace.
+            <strong>⚡ Rapid Iteration</strong><br><br>
+            With a near instant live render, you can quickly see<br>
+            changes and iterate at your pace.
           </td>
         </tr>
         <tr>
           <td style="border: none;">
-            <strong>🎯 Intent-Based Design</strong><br>
-            High-level components ensure the AI focuses<br>
-            on intent and layout rather than fighting with<br>
-            CSS alignment or business logic.
+            <strong>🎯 Intent-Based Design</strong><br><br>
+            High-level components ensure the AI focuses on<br>
+            intent and layout rather than fighting with CSS<br>
+            alignment or business logic.
           </td>
         </tr>
       </table>
@@ -212,6 +214,7 @@ All media used in this project are the property of their respective owners and a
 
 
 Distributed under the MIT License. See `LICENSE` for more information.
+
 
 
 
