@@ -21,8 +21,6 @@
 
 ![demo](https://github.com/user-attachments/assets/e66dff00-669e-41d4-85b5-448cbe3d9dbc)
 
-[✨ Live App](https://binbuf.github.io/markframe) | [📖 Language Spec](docs/Markframe-Language-Specification.md) | [🚀 Quick Start](#-getting-started) | [🧩 Components](#-component-catalog)
-
 ## ✨ Key Features
 
 - **🚅 Lightning Fast DSL** — Write a login screen in 6 lines, not 60. Indentation defines hierarchy automatically.
@@ -35,6 +33,57 @@
 - **🛠️ Rich Component Library** — 30+ components including Overlays (Sheets, Popups, Dialogs), FABs, and native-feeling Lists.
 - **🤖 AI-Friendly** — Designed specifically for LLMs to generate and humans to review easily.
 - **💾 Zero-Backend** — Fully client-side SPA using the browser's File System Access API for local file management.
+
+## [✨ Try It Out - Live App](https://binbuf.github.io/markframe)
+## [📖 Language Spec](docs/Markframe-Language-Specification.md)
+
+[🚀 Quick Start](#-getting-started) | [🧩 Components](#-component-catalog)
+
+## 🤖 Built for AI
+
+Markframe is designed to be a native language for AI-driven UI generation.
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td width="35%" valign="top" style="border: none;">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+          <td style="border: none;">
+            <strong>💪 Token Efficiency</strong><br><br>
+            Write complex interfaces with less tokens while letting<br>
+            LLMs do the heavy lifting.
+          </td>
+        </tr>
+        <tr>
+          <td style="border: none;">
+            <strong>📐 Structural Logic</strong><br><br>
+            Indentation-based syntax mirrors patterns LLMs already<br>
+            understand. Visualize and change your mock ups with<br>
+            ease.
+          </td>
+        </tr>
+        <tr>
+          <td style="border: none;">
+            <strong>⚡ Rapid Iteration</strong><br><br>
+            With a near instant live render, you can quickly see<br>
+            changes and iterate at your pace.
+          </td>
+        </tr>
+        <tr>
+          <td style="border: none;">
+            <strong>🎯 Intent-Based Design</strong><br><br>
+            High-level components ensure the AI focuses on<br>
+            intent and layout rather than fighting with CSS<br>
+            alignment or business logic.
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td width="65%" align="center" valign="top" style="border: none;">
+      <img src="https://github.com/user-attachments/assets/28dd2f2a-286a-416b-9b96-da9ffd9a8dd5" alt="AI Demo" width="100%" style="display: block; max-width: 500px; border-radius: 8px;">
+    </td>
+  </tr>
+</table>
 
 ## 📝 The markframe DSL
 
@@ -165,4 +214,7 @@ All media used in this project are the property of their respective owners and a
 
 
 Distributed under the MIT License. See `LICENSE` for more information.
+
+
+
 
