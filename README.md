@@ -43,46 +43,14 @@
 
 Markframe is designed to be a native language for AI-driven UI generation.
 
-<table border="0" cellpadding="0" cellspacing="0" width="100%">
-  <tr>
-    <td width="35%" valign="top" style="border: none;">
-      <table border="0" cellpadding="0" cellspacing="0" width="100%">
-        <tr>
-          <td style="border: none;">
-            <strong>💪 Token Efficiency</strong><br><br>
-            Write complex interfaces with less tokens.
-          </td>
-        </tr>
-        <tr>
-          <td style="border: none;">
-            <strong>📐 Structural Logic</strong><br><br>
-            Indentation-based syntax mirrors patterns LLMs already<br>
-            understand. Visualize and change your mock ups with<br>
-            ease.
-          </td>
-        </tr>
-        <tr>
-          <td style="border: none;">
-            <strong>⚡ Rapid Iteration</strong><br><br>
-            With a near instant live render, you can quickly see<br>
-            changes and iterate at your pace.
-          </td>
-        </tr>
-        <tr>
-          <td style="border: none;">
-            <strong>🎯 Intent-Based Design</strong><br><br>
-            High-level components ensure the AI focuses on<br>
-            intent and layout rather than fighting with CSS<br>
-            alignment or business logic.
-          </td>
-        </tr>
-      </table>
-    </td>
-    <td width="65%" align="center" valign="top" style="border: none;">
-      <img src="https://github.com/user-attachments/assets/28dd2f2a-286a-416b-9b96-da9ffd9a8dd5" alt="AI Demo" width="100%" style="display: block; max-width: 500px; border-radius: 8px;">
-    </td>
-  </tr>
-</table>
+* **💪 Token Efficiency** — Write complex interfaces with fewer tokens than JSON or HTML.
+* **📐 Structural Logic** — Indentation-based syntax mirrors the hierarchical tree patterns LLMs already excel at.
+* **⚡ Rapid Iteration** — Near-instant live rendering allows for fast human-in-the-loop corrections.
+* **🎯 Intent-Based Design** — High-level components ensure the AI focuses on UX intent rather than fighting CSS alignment.
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/28dd2f2a-286a-416b-9b96-da9ffd9a8dd5" alt="AI Demo" width="100%" style="width: 450px; border-radius: 8px;">
+</p>
 
 ## 📝 The markframe DSL
 
@@ -212,5 +180,6 @@ All media used in this project are the property of their respective owners and a
 ## 📄 License
 
 Distributed under the MIT License. See `LICENSE` for more information.
+
 
 
