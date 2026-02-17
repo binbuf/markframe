@@ -50,8 +50,7 @@ Markframe is designed to be a native language for AI-driven UI generation.
         <tr>
           <td style="border: none;">
             <strong>💪 Token Efficiency</strong><br><br>
-            Write complex interfaces with less tokens while letting<br>
-            LLMs do the heavy lifting.
+            Write complex interfaces with less tokens.
           </td>
         </tr>
         <tr>
@@ -212,9 +211,6 @@ All media used in this project are the property of their respective owners and a
 
 ## 📄 License
 
-
 Distributed under the MIT License. See `LICENSE` for more information.
-
-
 
 
