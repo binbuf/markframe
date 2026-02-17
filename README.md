@@ -38,22 +38,6 @@
 
 ## 🤖 Built for AI
 
-Markframe is designed to be a native language for AI driven UI generation.
-
-## 🤖 Built for AI
-
-Markframe is designed to be a native language for AI-driven UI generation.
-
-## 🤖 Built for AI
-
-Markframe is designed to be a native language for AI-driven UI generation.
-
-To hide the borders in GitHub's Markdown renderer, we need to use the border="0" attribute and ensure no <th> or <thead> tags are used, as those often trigger default styling. I have also slightly widened the text columns to make the flow more natural while keeping the video as the primary focus.
-
-Here is the updated raw code for your README.md:
-
-## 🤖 Built for AI
-
 Markframe is designed to be a native language for AI-driven UI generation.
 
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
@@ -228,5 +212,6 @@ All media used in this project are the property of their respective owners and a
 
 
 Distributed under the MIT License. See `LICENSE` for more information.
+
 
 
