@@ -839,17 +839,11 @@ Content card container.
 | `mb` | number | Margin-bottom in Tailwind units. |
 | `className` | string | Custom CSS classes. |
 
-Supports `-> target` navigation anchor (navigates on card tap).
-
 ```markframe
 Card "Today's Stats" subtitle="Dashboard" align=center
   Row gap=8
     Text "Steps: 8,432"
     Text "Calories: 342"
-
-Card outline raised align=center p=4 -> detail-view
-  Icon "heart" size=48 color=red
-  Text "Tap to view details"
 ```
 
 #### `List`

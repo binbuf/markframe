@@ -1,17 +1,10 @@
-import { screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import KCard from '../KCard';
-import { makeNode, renderWithProviders } from '../../test/helpers';
+import { makeNode } from '../../test/helpers';
 
-function renderCard(
-  props: Record<string, unknown> = {},
-  children?: React.ReactNode,
-  options?: { navigate?: (id: string) => void },
-) {
+function renderCard(props: Record<string, unknown> = {}, children?: React.ReactNode) {
   const node = makeNode({ type: 'Card', props });
-  return renderWithProviders(
-    <KCard node={node} theme="ios">{children}</KCard>,
-    options,
-  );
+  return render(<KCard node={node} theme="ios">{children}</KCard>);
 }
 
 describe('KCard', () => {
@@ -63,35 +56,5 @@ describe('KCard', () => {
   it('renders without crashing with no props', () => {
     const { container } = renderCard();
     expect(container.firstChild).toBeTruthy();
-  });
-
-  it('calls navigate when card has navigateTo and is clicked', () => {
-    const navigate = vi.fn();
-    const { container } = renderCard(
-      { navigateTo: 'user-info', title: 'Go' },
-      undefined,
-      { navigate },
-    );
-    const card = container.querySelector('.k-card') as HTMLElement;
-    fireEvent.click(card);
-    expect(navigate).toHaveBeenCalledWith('user-info');
-  });
-
-  it('applies pointer cursor when navigateTo is set', () => {
-    const { container } = renderCard({ navigateTo: 'user-info' });
-    const card = container.querySelector('[style]') as HTMLElement;
-    expect(card?.style.cursor).toBe('pointer');
-  });
-
-  it('does not call navigate when card has no navigateTo', () => {
-    const navigate = vi.fn();
-    const { container } = renderCard(
-      { title: 'Static' },
-      undefined,
-      { navigate },
-    );
-    const card = container.querySelector('.k-card') as HTMLElement;
-    fireEvent.click(card);
-    expect(navigate).not.toHaveBeenCalled();
   });
 });

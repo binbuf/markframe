@@ -2,11 +2,8 @@ import { type FC } from 'react';
 import { Card } from 'konsta/react';
 import type { ComponentProps } from './index';
 import { resolveColor } from './colorUtils';
-import { useNavigateOrOverlay } from './useNavigateOrOverlay';
 
 const KCard: FC<ComponentProps> = ({ node, children }) => {
-  const handleNavigation = useNavigateOrOverlay();
-  const navigateTo = node.props?.navigateTo as string | undefined;
   const title = (node.props?.title as string) || '';
   const content = (node.props?.content as string);
   const footer = (node.props?.footer as string);
@@ -59,8 +56,6 @@ const KCard: FC<ComponentProps> = ({ node, children }) => {
   if (mt !== undefined) style.marginTop = `${mt * 0.25}rem`;
   if (mb !== undefined) style.marginBottom = `${mb * 0.25}rem`;
 
-  if (navigateTo) style.cursor = 'pointer';
-
   return (
     <Card
       header={title || undefined}
@@ -71,7 +66,6 @@ const KCard: FC<ComponentProps> = ({ node, children }) => {
       footerDivider={footerDivider}
       className={`my-4 ${enrichedClass} ${className}`}
       style={style}
-      onClick={navigateTo ? () => handleNavigation(navigateTo) : undefined}
     >
       {content ? (
         <div className={`text-sm ${flexClasses}`}>{content}</div>

@@ -19,7 +19,9 @@
 
 **markframe** is a specialized markup language and IDE that lets you build high-fidelity mobile user interfaces in seconds. Instead of wrestling with verbose JSON or complex UI builders, you write simple, indentation-based code and instantly see platform-accurate iOS and Android previews.
 
-![demo](https://github.com/user-attachments/assets/e66dff00-669e-41d4-85b5-448cbe3d9dbc)
+![demo](./demo.gif)
+
+[✨ Live App](https://binbuf.github.io/markframe) | [📖 Language Spec](docs/Markframe-Language-Specification.md) | [🚀 Quick Start](#-getting-started) | [🧩 Components](#-component-catalog)
 
 ## ✨ Key Features
 
@@ -33,24 +35,6 @@
 - **🛠️ Rich Component Library** — 30+ components including Overlays (Sheets, Popups, Dialogs), FABs, and native-feeling Lists.
 - **🤖 AI-Friendly** — Designed specifically for LLMs to generate and humans to review easily.
 - **💾 Zero-Backend** — Fully client-side SPA using the browser's File System Access API for local file management.
-
-## [✨ Try It Out - Live App](https://binbuf.github.io/markframe)
-## [📖 Language Spec](docs/Markframe-Language-Specification.md)
-
-[🚀 Quick Start](#-getting-started) | [🧩 Components](#-component-catalog)
-
-## 🤖 Built for AI
-
-Markframe is designed to be a native language for AI-driven UI generation.
-
-* **💪 Token Efficiency** — Write complex interfaces with fewer tokens than JSON or HTML.
-* **📐 Structural Logic** — Indentation-based syntax mirrors the hierarchical tree patterns LLMs already excel at.
-* **⚡ Rapid Iteration** — Near-instant live rendering allows for fast human-in-the-loop corrections.
-* **🎯 Intent-Based Design** — High-level components ensure the AI focuses on UX intent rather than fighting CSS alignment.
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/28dd2f2a-286a-416b-9b96-da9ffd9a8dd5" alt="AI Demo" width="100%" style="width: 450px; border-radius: 8px;">
-</p>
 
 ## 📝 The markframe DSL
 
@@ -179,7 +163,6 @@ All media used in this project are the property of their respective owners and a
 
 ## 📄 License
 
+
 Distributed under the MIT License. See `LICENSE` for more information.
-
-
 
